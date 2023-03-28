@@ -19,6 +19,7 @@ inputs:
   components:
     description: Comma-separated list of components to be additionally installed
     required: false
+    default: miri, rust-src
 
 outputs:
   cachekey:
@@ -113,3 +114,6 @@ runs:
 
     - run: rustc +${{steps.parse.outputs.toolchain}} --version --verbose
       shell: bash
+    - uses: dtolnay/install@xargo
+      with:
+        bin: xargo-check
